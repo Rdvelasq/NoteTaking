@@ -1,0 +1,28 @@
+﻿@model IEnumerable<NoteTaking.Models.Note>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<p>
+    <a asp-action="Create"> <i class="bi bi-plus"></i> Add Note </a> 
+</p>
+
+<div class="row">
+@foreach (var item in Model) {
+    <div class="column">
+        <div class="card">
+            <div class="card-headerz">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title) </h5> <p class="create-date"> @Html.DisplayFor(modelItem => item.Created) </p>
+            </div>
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+            <p>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>   
+            </p>
+        </div> 
+    </div>
+}
+</div>
+                
